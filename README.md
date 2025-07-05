@@ -15,7 +15,7 @@ Download a full build of **FFmpeg** with **libvvenc** from the official builds:
 4. Place the `encode-vvc.bat` script into the `bin` folder inside the extracted FFmpeg directory, e.g.:
 
 ```
-ffmpeg-master-full_build/
+ffmpeg-YYYY-MM-DD-git-xxxxxxxxxx-full_build/
 └── bin/
     ├── ffmpeg.exe
     ├── ffprobe.exe

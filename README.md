@@ -29,7 +29,6 @@ Before using this script, you must install **FFmpeg with full libvvenc support**
    ├── bin/
    ├── doc/
    ├── presets/
-   ├── encode-vvc.bat
    └── ...
    ```
 

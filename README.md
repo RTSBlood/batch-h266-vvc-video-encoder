@@ -1,86 +1,67 @@
-# H.266 / VVC Video Encoder (Batch Script for Windows)
+# Batch H.266 / VVC Video Encoder
 
-This is a simple Windows batch script that allows you to encode video files to the H.266/VVC format using FFmpeg and the `libvvenc` encoder.
+A simple Windows batch script to encode videos into the H.266/VVC format using FFmpeg and the `libvvenc` encoder.
 
----
+## 🔧 Requirements
 
-## ⚙️ Requirements
+Download a full build of **FFmpeg** with **libvvenc** from the official builds:
 
-Before using this script, you must install **FFmpeg with full libvvenc support**.
+➡️ [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/)
 
-### 🔽 Download FFmpeg Full Build with VVC support
+1. Scroll to **"git master builds"**
+2. Under **"latest git master branch build"**, download the archive named:  
+   **`ffmpeg-git-full.7z`**
+3. Extract the archive
+4. Place the `encode-vvc.bat` script into the `bin` folder inside the extracted FFmpeg directory, e.g.:
 
-1. Go to: [https://www.gyan.dev/ffmpeg/builds/](https://www.gyan.dev/ffmpeg/builds/)
-2. Scroll to the **"git master builds"** section.
-3. Under **"latest git master branch build"**, download this archive:
-   - 📦 `ffmpeg-git-full.7z`
-4. Extract the archive using [7-Zip](https://www.7-zip.org/) or similar.
-   - You will get a folder named like:
-     ```
-     ffmpeg-YYYY-MM-DD-git-xxxxxxxxxx-full_build
-     ```
-
-### 📂 Place the script
-
-1. Copy `encode-vvc.bat` into the root of the extracted folder above.
-2. You should now have a structure like:
-   ```
-   ffmpeg-YYYY-MM-DD-git-xxxxxxxxxx-full_build/
-   ├── bin/
-   ├── doc/
-   ├── presets/
-   └── ...
-   ```
-
----
+```
+ffmpeg-master-full_build/
+└── bin/
+    ├── ffmpeg.exe
+    ├── ffprobe.exe
+    ├── ...
+    └── encode-vvc.bat  ← Place the script here
+```
 
 ## ▶️ How to Use
 
-1. **Double-click** on `encode-vvc.bat` to run it.
-2. Follow the prompts:
-   - Input one or more file paths (use **quotes** if they contain spaces).
-     - Example: `"C:\Videos\My Movie.mp4" "MyOtherClip.mov"`
-   - Choose encoding speed: faster → slower
-   - Choose quality control mode:
-     - QP (recommended: 22–37)
-     - Bitrate (e.g., `3000k`)
-   - Set GOP period (e.g., 10)
-   - Choose output extension (`mp4`, `mkv`, etc.)
+1. Double-click `encode-vvc.bat`
+2. Follow the prompts in the terminal:
+   - Enter the video file(s) (you can enter full paths, quoted if they include spaces)
+   - Choose encoding speed (preset)
+   - Choose quality control mode (QP or bitrate)
+   - Enter GOP period
+   - Choose output file format
 
-3. Encoded videos will be saved in:
-   ```
-   outputs/YYYY-MM-DD/
-   ```
+3. Encoded files will be saved inside the `outputs/YYYY-MM-DD/` folder based on the current date.
 
-   This folder is automatically created based on the current date.
+Example input:
 
----
+```
+"C:\Videos\My Movie.mp4" "C:\Other\Test.mov"
+```
 
-## 📌 Notes
+## 📁 Output Structure
 
-- The script **preserves the original audio track** (`-c:a copy`).
-- Supports **batch encoding** of multiple files at once.
-- Compatible only with **Windows** systems (via `.bat` script).
-- Requires a FFmpeg version that includes `libvvenc`.
+```
+outputs/
+└── 2025-07-05/
+    ├── My Movie-h266.mp4
+    └── Test-h266.mp4
+```
 
----
+## ✅ Features
 
-## 🧠 About VVC (H.266)
+- Interactive encoding via terminal prompts
+- Supports QP or bitrate encoding
+- Organizes output by date
+- Compatible with file paths that contain spaces
 
-Versatile Video Coding (VVC), also known as H.266, is a cutting-edge video compression standard offering **significant bitrate savings** compared to H.265/HEVC and older formats — ideal for 4K/8K content and streaming efficiency.
+## 🧠 Credits
 
----
+- [FFmpeg](https://ffmpeg.org/) - Multimedia framework by the FFmpeg team
+- [VVenc](https://github.com/fraunhoferhhi/vvenc) - VVC encoder by Fraunhofer HHI
 
-## 🙏 Credits
+## 📄 License
 
-- **FFmpeg**: [https://ffmpeg.org/](https://ffmpeg.org/)  
-  > FFmpeg is a powerful open-source multimedia framework to decode, encode, transcode, stream, and play almost anything.
-
-- **VVenc (VVC Encoder by Fraunhofer HHI)**: [https://github.com/fraunhoferhhi/vvenc](https://github.com/fraunhoferhhi/vvenc)  
-  > VVenc is an open and optimized implementation of the H.266/VVC standard.
-
----
-
-## 📜 License
-
-This script is provided under the MIT License. FFmpeg and VVenc are licensed separately — check their respective repositories for details.
+This script is open-source and available under the MIT License.
